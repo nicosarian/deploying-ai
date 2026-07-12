@@ -1,0 +1,7 @@
+# Never commit credentials
+.env
+
+# Build artifacts / local junk
+__pycache__/
+.DS_Store
+data/chroma_store/
