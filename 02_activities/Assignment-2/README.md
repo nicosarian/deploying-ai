@@ -132,15 +132,6 @@ python data/build_index.py   # one-time: builds the Chroma store (needs
 python app.py
 ```
 
-### One thing you need to change
-
-`llm_client.py` has a single clearly-marked function, `get_client()`,
-that this project uses as its only seam to the LLM backend. It currently
-returns a plain `OpenAI()` client. **Replace its body with this course's
-`get_client()`** (the one that authenticates against the AWS API Gateway
-proxy used elsewhere in the certificate) — nothing else in the project
-needs to change, since every other file only calls
-`llm_client.chat_completion()` / `llm_client.summarize_turns()`.
 
 ## Known limitations / design choices
 
@@ -150,6 +141,4 @@ needs to change, since every other file only calls
 - Guardrails are regex heuristics, not a second model call, which is a
   deliberate cost/latency tradeoff — the system prompt is the second
   line of defense against phrasings that slip past them.
-- The Met and Crossref services fail soft (return an `error` field
-  rather than raising) if the API is unreachable, so a network hiccup on
-  one tool doesn't crash the whole turn.
+

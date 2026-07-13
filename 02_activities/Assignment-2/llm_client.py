@@ -4,16 +4,6 @@ llm_client.py
 Every LLM call in this project goes through this one file. That is
 deliberate: it is the single seam you need to touch to match the course's
 environment.
-
->>> ACTION NEEDED <<<
-This course routes the OpenAI SDK through a custom `get_client()` that
-points at an AWS API Gateway proxy (the same pattern used in the RAG /
-agents notebooks earlier in the certificate). I don't have that exact
-function, so `get_client()` below is a plain, runnable stand-in — replace
-its body with your course's version and nothing else in the project needs
-to change. Everything downstream (services, guardrails, memory, app.py)
-only ever calls `chat_completion()` and `summarize_turns()` from this
-file.
 """
 
 import json

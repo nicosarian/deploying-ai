@@ -1,20 +1,3 @@
-"""
-app.py
-------
-Entry point: `python app.py` launches the Gradio chat interface.
-
-Architecture in one paragraph: every user message first passes through
-two deterministic guardrail checks (guardrails.py). If it clears those,
-it's added to a ConversationMemory (memory.py) and sent to the model
-along with three tool schemas — one per service. The model decides for
-itself whether answering requires calling search_met_artwork (Service 1),
-search_theology_corpus (Service 2), search_citations (Service 3), some
-combination, or none at all. Tool results are fed back to the model,
-which produces the final in-persona reply. This is a single small
-agent loop, not three separate hardcoded buttons — the "which service do
-I need" decision is exactly what we're delegating to function calling.
-"""
-
 import inspect
 import json
 

@@ -1,25 +1,3 @@
-"""
-services/citation_finder.py
------------------------------
-SERVICE 3: Your Choice — implemented as Function Calling (assignment
-requirement: must use function calling, web search, or an MCP server;
-this uses function calling, with an API call as its side effect, which
-the assignment explicitly allows).
-
-Backend: Crossref's public REST API (https://api.crossref.org), which is
-free, requires no API key, and indexes scholarly metadata (titles,
-authors, journals, years, DOIs) across a huge share of published
-academic literature. We use the /works endpoint with the
-`query.bibliographic` parameter, which Crossref documents as intended
-specifically for citation lookup.
-
-Rather than being invoked directly, this is exposed to the model as a
-callable tool (CITATION_TOOL_SCHEMA below) so the model itself decides,
-mid-conversation, whether a question calls for real scholarly citations
-— which is the point of function calling as opposed to a hardcoded
-button.
-"""
-
 import requests
 
 CROSSREF_URL = "https://api.crossref.org/works"
